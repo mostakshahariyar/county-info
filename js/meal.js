@@ -4,14 +4,24 @@ const searchFood = () => {
 	// console.log(searchText)
 
 	searchFild.value = '';
-	const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
-	fetch(url)
-		.then(res => res.json())
-		.then(data => displaySearchResult(data.meals))
+	if (searchText == '') {
+		//please right some thing
+	}
+	else {
+		const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
+		fetch(url)
+			.then(res => res.json())
+			.then(data => displaySearchResult(data.meals))
+
+	}
 
 }
 const displaySearchResult = meals => {
 	const searchResult = document.getElementById('search-result')
+	searchResult.textContent = '';
+	if (meals.length == 0) {
+		// not result found
+	}
 	meals.forEach(meal => {
 		// console.log(meal)
 		const div = document.createElement('div')
